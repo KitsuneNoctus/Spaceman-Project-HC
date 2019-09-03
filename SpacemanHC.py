@@ -67,6 +67,18 @@ def spaceman(secret_word):
     Args:
       secret_word (string): the secret word to guess.
     '''
+    gameOn = True
+    while gameOn:
+        userMenu = input("Play or Quit?[P/Q]: ")
+        if userMenu == "P":
+            
+            userGuess = input("Letter Guess: ")
+
+        elif userMenu == "Q":
+            print("Exiting")
+            gameOn = False
+        else:
+            print("Please Enter a Proper Input.")
 
 
     #TODO: show the player information about the game according to the project spec
