@@ -2,6 +2,7 @@
 #Henry Calderon
 
 import random
+import string
 
 def load_word():
     '''
@@ -55,6 +56,8 @@ def is_guess_in_word(guess, secret_word):
         bool: True if the guess is in the secret_word, False otherwise
     '''
     #TODO: check if the letter guess is in the secret word
+    if guess in secret_word:
+        return 0
 
     pass
 
@@ -71,8 +74,15 @@ def spaceman(secret_word):
     while gameOn:
         userMenu = input("Play or Quit?[P/Q]: ")
         if userMenu == "P":
-            
-            userGuess = input("Letter Guess: ")
+            print("Your Word is "+str(len(secret_word))+" letters long.")
+            numGuess = True
+            while numGuess:
+                userGuess = input("Letter Guess: ")
+                if userGuess.isalpha() == True and len(userGuess) <= 1:
+                    is_guess_in_word(userGuess,secret_word)
+                else:
+                    print("Use something else.")
+            #gameOn = False
 
         elif userMenu == "Q":
             print("Exiting")
