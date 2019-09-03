@@ -57,7 +57,9 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
     if guess in secret_word:
-        return 0
+        print("Letter Entered is Part of word.")
+    else:
+        print("Letter is not part of it.")
 
     pass
 
@@ -70,25 +72,30 @@ def spaceman(secret_word):
     Args:
       secret_word (string): the secret word to guess.
     '''
-    gameOn = True
-    while gameOn:
-        userMenu = input("Play or Quit?[P/Q]: ")
-        if userMenu == "P":
-            print("Your Word is "+str(len(secret_word))+" letters long.")
-            numGuess = True
-            while numGuess:
-                userGuess = input("Letter Guess: ")
-                if userGuess.isalpha() == True and len(userGuess) <= 1:
-                    is_guess_in_word(userGuess,secret_word)
-                else:
-                    print("Use something else.")
+    print("Your Word is "+str(len(secret_word))+" letters long.")
+    numGuess = True
+    guessCount = 0
+    while numGuess:
+        userGuess = input("Letter Guess: ")
+        guessCount += 1
+        if userGuess.isalpha() == True and len(userGuess) <= 1:
+            is_guess_in_word(userGuess,secret_word)
+            # if true:
+            #     meow
+            # else:
+            #     print("Try Again")
+        else:
+            print("Use something else.")
+
+
+        if guessCount > 52:
+            numGuess = False
+        else:
+            guess_left = 52 - guessCount
+            print("You have "+ str(guess_left)+" guesses left.")
+
             #gameOn = False
 
-        elif userMenu == "Q":
-            print("Exiting")
-            gameOn = False
-        else:
-            print("Please Enter a Proper Input.")
 
 
     #TODO: show the player information about the game according to the project spec
@@ -107,5 +114,14 @@ def spaceman(secret_word):
 
 
 #These function calls that will start the game
-secret_word = load_word()
-spaceman(load_word())
+gameOn = True
+while gameOn:
+    userMenu = input("Play or Quit?[P/Q]: ")
+    if userMenu == "P" or userMenu == "Play" or userMenu == "p":
+        secret_word = load_word()
+        spaceman(load_word())
+    elif userMenu == "Q" or userMenu == "Quit" or userMenu == "q":
+        print("Exiting")
+        gameOn = False
+    else:
+        print("Please Enter a Proper Input.")
