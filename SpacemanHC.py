@@ -4,6 +4,8 @@
 import random
 import string
 
+lettersGuessed = []
+
 def load_word():
     '''
     A function that reads a text file of words and randomly selects one to use as the secret word
@@ -40,6 +42,9 @@ def get_guessed_word(secret_word, letters_guessed):
     Returns:
         string: letters and underscores.  For letters in the word that the user has guessed correctly, the string should contain the letter at the correct position.  For letters in the word that the user has not yet guessed, shown an _ (underscore) instead.
     '''
+    holdString = ""
+    for i in secret_word:
+        print("Okay")
 
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
 
@@ -58,8 +63,9 @@ def is_guess_in_word(guess, secret_word):
     #TODO: check if the letter guess is in the secret word
     if guess in secret_word:
         print("Letter Entered is Part of word.")
+        return True
     else:
-        print("Letter is not part of it.")
+        return False
 
     pass
 
@@ -77,21 +83,23 @@ def spaceman(secret_word):
     guessCount = 0
     while numGuess:
         userGuess = input("Letter Guess: ")
-        guessCount += 1
+        #guessCount += 1
         if userGuess.isalpha() == True and len(userGuess) <= 1:
-            is_guess_in_word(userGuess,secret_word)
-            # if true:
-            #     meow
-            # else:
-            #     print("Try Again")
+            is_letter_there = is_guess_in_word(userGuess,secret_word)
+            if is_letter_there == True:
+                get_guessed_word(secret_word, userGuess)
+            else:
+                print("Not a part of Word, Try Again.")
+                guessCount += 1
+
         else:
             print("Use something else.")
 
 
-        if guessCount > 52:
+        if guessCount > 25:
             numGuess = False
         else:
-            guess_left = 52 - guessCount
+            guess_left = 25 - guessCount
             print("You have "+ str(guess_left)+" guesses left.")
 
             #gameOn = False
