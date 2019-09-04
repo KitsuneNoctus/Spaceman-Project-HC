@@ -90,6 +90,8 @@ def spaceman(secret_word):
     guessCount = 0
     while numGuess:
         userGuess = input("Letter Guess: ")
+        userGuess=userGuess.lower()
+        print(userGuess)
         print(secret_word)
         #guessCount += 1
         if userGuess.isalpha() == True and len(userGuess) <= 1:
@@ -105,10 +107,10 @@ def spaceman(secret_word):
             print("Use something else.")
 
 
-        if guessCount > 25:
+        if guessCount > 20:
             numGuess = False
         else:
-            guess_left = 25 - guessCount
+            guess_left = 20 - guessCount
             print("You have "+ str(guess_left)+" guesses left.")
 
             #gameOn = False
