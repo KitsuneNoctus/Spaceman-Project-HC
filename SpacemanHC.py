@@ -42,9 +42,17 @@ def get_guessed_word(secret_word, letters_guessed):
     Returns:
         string: letters and underscores.  For letters in the word that the user has guessed correctly, the string should contain the letter at the correct position.  For letters in the word that the user has not yet guessed, shown an _ (underscore) instead.
     '''
+    #holdString.clear()
     holdString = ""
-    for i in secret_word:
-        print("Okay")
+    for letter in secret_word:
+        for guess in letters_guessed:
+            if letter == guess:
+                holdString += guess
+                print(holdString)
+            else:
+                holdString += "_"
+
+    print(holdString)
 
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
 
@@ -87,7 +95,8 @@ def spaceman(secret_word):
         if userGuess.isalpha() == True and len(userGuess) <= 1:
             is_letter_there = is_guess_in_word(userGuess,secret_word)
             if is_letter_there == True:
-                get_guessed_word(secret_word, userGuess)
+                lettersGuessed.append(userGuess)
+                get_guessed_word(secret_word, lettersGuessed)
             else:
                 print("Not a part of Word, Try Again.")
                 guessCount += 1
