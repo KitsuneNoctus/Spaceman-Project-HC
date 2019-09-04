@@ -44,13 +44,12 @@ def get_guessed_word(secret_word, letters_guessed):
     '''
     #holdString.clear()
     holdString = ""
-    for letter in secret_word:
-        for guess in letters_guessed:
-            if letter == guess:
-                holdString += guess
-                print(holdString)
-            else:
-                holdString += "_"
+    holdWord = list(secret_word)
+    for l in holdWord:
+        if l in letters_guessed:
+            holdString += l
+        else:
+            holdString += "_"
 
     print(holdString)
 
@@ -91,6 +90,7 @@ def spaceman(secret_word):
     guessCount = 0
     while numGuess:
         userGuess = input("Letter Guess: ")
+        print(secret_word)
         #guessCount += 1
         if userGuess.isalpha() == True and len(userGuess) <= 1:
             is_letter_there = is_guess_in_word(userGuess,secret_word)
@@ -136,6 +136,7 @@ while gameOn:
     userMenu = input("Play or Quit?[P/Q]: ")
     if userMenu == "P" or userMenu == "Play" or userMenu == "p":
         secret_word = load_word()
+        print(secret_word)
         spaceman(load_word())
     elif userMenu == "Q" or userMenu == "Quit" or userMenu == "q":
         print("Exiting")
