@@ -136,7 +136,6 @@ while gameOn:
     userMenu = input("Play or Quit?[P/Q]: ")
     if userMenu == "P" or userMenu == "Play" or userMenu == "p":
         secret_word = load_word()
-        print(secret_word)
         spaceman(load_word())
     elif userMenu == "Q" or userMenu == "Quit" or userMenu == "q":
         print("Exiting")
