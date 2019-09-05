@@ -101,6 +101,7 @@ def spaceman(secret_word):
     numGuess = True
     guessCount = 0
     while numGuess:
+        print(secret_word)
         userGuess = input("Letter Guess: ")
         userGuess=userGuess.lower()
         #print(secret_word)
@@ -120,6 +121,7 @@ def spaceman(secret_word):
                     numGuess = True
             else:
                 print("Not a part of Word, Try Again.")
+                #print(wordSofar)
                 guessCount += 1
         else:
             print("Use something else.")
@@ -153,7 +155,10 @@ def spaceman(secret_word):
 #These function calls that will start the game
 gameOn = True
 while gameOn:
+    print("#---------------Menu--------------#")
+    print("Play Spaceman!")
     userMenu = input("Play or Quit?[P/Q]: ")
+    print("#----------------------------------#")
     if userMenu == "P" or userMenu == "Play" or userMenu == "p":
         secret_word = load_word()
         spaceman(load_word())
