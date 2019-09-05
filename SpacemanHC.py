@@ -102,11 +102,8 @@ def spaceman(secret_word):
     numGuess = True
     guessCount = 0
     while numGuess:
-        #print(secret_word)
         userGuess = input("Letter Guess: ")
         userGuess=userGuess.lower()
-        #print(secret_word)
-        #guessCount += 1
         if userGuess in lettersGuessed:
             print("Aleady Guessed. Try again.")
         elif userGuess.isalpha() == True and len(userGuess) <= 1:
@@ -116,6 +113,7 @@ def spaceman(secret_word):
                 get_guessed_word(secret_word, lettersGuessed)
                 win = is_word_guessed(secret_word,lettersGuessed)
                 if win == True:
+                    print("You Win!")
                     numGuess = False
                 else:
                     numGuess = True
@@ -127,7 +125,8 @@ def spaceman(secret_word):
             print("Use something else.")
 
 
-        if guessCount > 7:
+        if guessCount >= 7:
+            print("Game over! The word was: "+secret_word)
             numGuess = False
         else:
             guess_left = 7 - guessCount
