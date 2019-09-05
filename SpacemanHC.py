@@ -160,7 +160,7 @@ while gameOn:
     print("#----------------------------------#")
     if userMenu == "P" or userMenu == "Play" or userMenu == "p":
         secret_word = load_word()
-        spaceman(load_word())
+        spaceman(secret_word)
     elif userMenu == "Q" or userMenu == "Quit" or userMenu == "q":
         print("Exiting")
         gameOn = False
