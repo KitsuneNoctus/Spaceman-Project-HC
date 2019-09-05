@@ -101,7 +101,7 @@ def spaceman(secret_word):
     numGuess = True
     guessCount = 0
     while numGuess:
-        print(secret_word)
+        #print(secret_word)
         userGuess = input("Letter Guess: ")
         userGuess=userGuess.lower()
         #print(secret_word)
