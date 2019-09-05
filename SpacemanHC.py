@@ -4,6 +4,7 @@
 import random
 import string
 
+
 lettersGuessed = []
 
 def load_word():
@@ -30,6 +31,16 @@ def is_word_guessed(secret_word, letters_guessed):
     Returns:
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
+    shouldScore = len(list(secret_word))
+    score = 0
+    for i in secret_word:
+        if i in lettersGuessed:
+            score += 1
+
+    if score == shouldScore:
+        return True
+    else:
+        return False
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
     pass
 
@@ -52,6 +63,7 @@ def get_guessed_word(secret_word, letters_guessed):
             holdString += "_"
 
     print(holdString)
+    return holdString
 
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
 
@@ -91,26 +103,32 @@ def spaceman(secret_word):
     while numGuess:
         userGuess = input("Letter Guess: ")
         userGuess=userGuess.lower()
-        print(userGuess)
-        print(secret_word)
+        #print(secret_word)
         #guessCount += 1
-        if userGuess.isalpha() == True and len(userGuess) <= 1:
+        if userGuess in lettersGuessed:
+            print("Aleady Guessed. Try again.")
+            guessCount += 1
+        elif userGuess.isalpha() == True and len(userGuess) <= 1:
+            lettersGuessed.append(userGuess)
             is_letter_there = is_guess_in_word(userGuess,secret_word)
             if is_letter_there == True:
-                lettersGuessed.append(userGuess)
                 get_guessed_word(secret_word, lettersGuessed)
+                win = is_word_guessed(secret_word,lettersGuessed)
+                if win == True:
+                    numGuess = False
+                else:
+                    numGuess = True
             else:
                 print("Not a part of Word, Try Again.")
                 guessCount += 1
-
         else:
             print("Use something else.")
 
 
-        if guessCount > 20:
+        if guessCount > 10:
             numGuess = False
         else:
-            guess_left = 20 - guessCount
+            guess_left = 10 - guessCount
             print("You have "+ str(guess_left)+" guesses left.")
 
             #gameOn = False
