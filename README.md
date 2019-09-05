@@ -22,3 +22,10 @@ Spaceman Function will open the game
 - Play / Enter will then start the game
 -- Then is will as the user for their guess
 -- This will be put into the word guessed function
+
+#How To Play
+- A word is randomly chosen when you start the game, it will tell you length of words
+- Enter your guesses. You only have 7 tries.
+-- You will not receive a penalty for trying the same guess over again.
+- Should you lose, you will be told so and be asked to play Again
+- SHould you win, will be declared winner and asked to play again
