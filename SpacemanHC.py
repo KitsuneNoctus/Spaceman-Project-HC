@@ -156,9 +156,11 @@ gameOn = True
 while gameOn:
     print("#---------------Menu---------------#")
     print("Play Spaceman!")
+    print("The word guessing game! Enter letters to try and find the word.")
     userMenu = input("Play or Quit?[P/Q]: ")
     print("#----------------------------------#")
     if userMenu == "P" or userMenu == "Play" or userMenu == "p":
+        print("You get 7 guesses!")
         secret_word = load_word()
         spaceman(secret_word)
     elif userMenu == "Q" or userMenu == "Quit" or userMenu == "q":
