@@ -97,6 +97,7 @@ def spaceman(secret_word):
     Args:
       secret_word (string): the secret word to guess.
     '''
+    lettersGuessed.clear()
     print("Your Word is "+str(len(secret_word))+" letters long.")
     print("You have 7 guesses to try and figure out the word.")
     numGuess = True
@@ -163,7 +164,7 @@ while gameOn:
         secret_word = load_word()
         spaceman(secret_word)
     elif userMenu == "Q" or userMenu == "Quit" or userMenu == "q":
-        print("Exiting")
+        print("Thanks for Playing! Exiting")
         gameOn = False
     else:
         print("Please Enter a Proper Input.")
