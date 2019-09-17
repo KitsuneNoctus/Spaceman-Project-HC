@@ -34,7 +34,7 @@ def is_word_guessed(secret_word, letters_guessed):
     shouldScore = len(list(secret_word))
     score = 0
     for i in secret_word:
-        if i in lettersGuessed:
+        if i in letters_guessed:
             score += 1
 
     if score == shouldScore:
@@ -84,6 +84,7 @@ def is_guess_in_word(guess, secret_word):
         print("Letter Entered is Part of word.")
         return True
     else:
+        print("Letter Entered is Not Part of Word.")
         return False
 
     pass
@@ -135,29 +136,47 @@ def spaceman(secret_word):
 
             #gameOn = False
 
+#Creating test function to run in the code and to run with Pytest
+def test_is_guess_in_word():
+    test_word = "dodge"
+    test_guess = "d"
+    test_part = is_guess_in_word(test_guess, test_word)
+    assert test_part == True
+    test_guess = "y"
+    test_part2 = is_guess_in_word(test_guess, test_word)
+    #assert test_part2 == True
+
+def test_get_guessed_word():
+    test_word = "dodge"
+    test_list = ["d","s","o","y","e","x"]
+    test_hold = get_guessed_word(test_word,test_list)
+    assert test_hold == "dod_e"
+    #assert test_hold == "dode"
+    #print("Test List = ")
+    #print(test_list)
+
+def test_is_word_guessed():
+    test_word = "dodge"
+    test_list = ["d","y","o","l","e","g","j","k","f"]
+    test_correct = is_word_guessed(test_word,test_list)
+    assert test_correct == True
+    #assert test_correct == False
 
 
-    #TODO: show the player information about the game according to the project spec
 
-    #TODO: Ask the player to guess one letter per round and check that it is only one letter
+#test_word = "dodge"
+test_is_guess_in_word()
+test_get_guessed_word()
+test_is_word_guessed()
 
-    #TODO: Check if the guessed letter is in the secret or not and give the player feedback
-
-    #TODO: show the guessed word so far
-
-    #TODO: check if the game has been won or lost
-
-
-
-
-
-
+#Need to use "pytest -s SpacemanHC.py" in order to run the code
 #These function calls that will start the game
 gameOn = True
 while gameOn:
     print("#---------------Menu---------------#")
     print("Play Spaceman!")
     print("The word guessing game! Enter letters to try and find the word.")
+    #userMenu = "P"
     userMenu = input("Play or Quit?[P/Q]: ")
     print("#----------------------------------#")
     if userMenu == "P" or userMenu == "Play" or userMenu == "p":
