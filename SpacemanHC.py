@@ -162,6 +162,24 @@ def test_is_word_guessed():
     assert test_correct == True
     #assert test_correct == False
 
+def play_spaceman():
+    gameOn = True
+    while gameOn:
+        print("#---------------Menu---------------#")
+        print("Play Spaceman!")
+        print("The word guessing game! Enter letters to try and find the word.")
+        #userMenu = "P"
+        userMenu = input("Play or Quit?[P/Q]: ")
+        print("#----------------------------------#")
+        if userMenu == "P" or userMenu == "Play" or userMenu == "p":
+            secret_word = load_word()
+            spaceman(secret_word)
+        elif userMenu == "Q" or userMenu == "Quit" or userMenu == "q":
+            print("Thanks for Playing! Exiting")
+            gameOn = False
+        else:
+            print("Please Enter a Proper Input.")
+
 
 
 #test_word = "dodge"
@@ -169,21 +187,8 @@ test_is_guess_in_word()
 test_get_guessed_word()
 test_is_word_guessed()
 
+if __name__ == "__main__":
+    play_spaceman()
+
 #Need to use "pytest -s SpacemanHC.py" in order to run the code
 #These function calls that will start the game
-gameOn = True
-while gameOn:
-    print("#---------------Menu---------------#")
-    print("Play Spaceman!")
-    print("The word guessing game! Enter letters to try and find the word.")
-    #userMenu = "P"
-    userMenu = input("Play or Quit?[P/Q]: ")
-    print("#----------------------------------#")
-    if userMenu == "P" or userMenu == "Play" or userMenu == "p":
-        secret_word = load_word()
-        spaceman(secret_word)
-    elif userMenu == "Q" or userMenu == "Quit" or userMenu == "q":
-        print("Thanks for Playing! Exiting")
-        gameOn = False
-    else:
-        print("Please Enter a Proper Input.")
